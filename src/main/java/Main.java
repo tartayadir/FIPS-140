@@ -1,14 +1,19 @@
 import utils.YarrowRandom;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
+
+import static test.MonobiticTest.performMonobiticTest;
 
 public class Main {
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
         YarrowRandom random = new YarrowRandom();
-        byte[] bytes = random.nextBytes(2_500);
+        int KEY_LENGTH = 20_000;
+        byte[] key = random.nextBytes(KEY_LENGTH);
 
-        System.out.println(Arrays.toString(bytes));
+        boolean monobiticTestResult = performMonobiticTest(key);
+        boolean result = monobiticTestResult;
+
+        System.out.println(result);
     }
 }
